@@ -32,7 +32,7 @@ const CartFlow = require('cartflow');
 
 ### Usage
 
-See [online Demo]()
+See [online Demo](https://codepen.io/aashk/pen/MYgGvxw)
 
 ```javascript
 const animation = new CartFlow({
