@@ -1,0 +1,30 @@
+{
+  "name": "cartflow",
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript library for creating smooth 'Add to Cart' animations with customizable options, sound effects, and cart shake effects.",
+  "main": "CartFlow.js",
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "cartflow",
+    "add-to-cart",
+    "animation",
+    "shopping-cart",
+    "javascript-library",
+    "ecommerce",
+    "cart-animation",
+    "customizable",
+    "frontend"
+  ],
+  "author": "A.S Nassiry",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cartflow.git"
+  },
+  "bugs": {
+      "url": "https://github.com/nassiry/cartflow/issues"
+    },
+  "homepage": "https://github.com/nassiry/cartflow#readme"  
+}
