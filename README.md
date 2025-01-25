@@ -1,4 +1,13 @@
-# CartFlow Library
+<div align="center">
+
+# CartFlow
+
+![npm version](https://img.shields.io/npm/v/cartflow.svg)
+![Total Downloads](https://img.shields.io/npm/dt/cartflow.svg)
+![License](https://img.shields.io/npm/l/cartflow.svg)
+
+</div>
+
 
 **CartFlow** is a lightweight, modern JavaScript library to animate items moving to a shopping cart. It supports Node.js, browser environments, and UMD/ES module formats.
 
@@ -6,7 +15,7 @@
 
 - Smooth animations for "Add to Cart" interactions.
 
-- Optional sound effect support.
+- Optional sound effect support with type validation and warnings for unsupported types.
 
 - Optional cart "shake" effect after adding an item.
 
@@ -15,6 +24,9 @@
 - Works seamlessly in modern browsers and Node.js environments.
 
 - Callbacks with relevant elements for better integration.
+
+- Uses GSAP for animations with a fallback mechanism if GSAP is unavailable.
+
 
 ### Installation
 Using npm (for Node.js and bundlers like Webpack, Vite, or Rollup):
@@ -32,8 +44,6 @@ const CartFlow = require('cartflow');
 
 ### Usage
 
-See [online Demo](https://codepen.io/aashk/pen/MYgGvxw)
-
 ```javascript
 const animation = new CartFlow({
     cartSelector: ".shopping-cart",
@@ -47,6 +57,8 @@ const animation = new CartFlow({
     soundEffect: "click-sound.mp3",
   });
 ```
+
+See [online Demo](https://codepen.io/aashk/full/MYgGvxw)
 
 ### Configuration Options
 | Option  | Type | Default | Description |
@@ -74,4 +86,4 @@ Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔
 Feel free to submit issues or pull requests to improve the package. Contributions are welcome!
 
 ### License
-This package is open-source software licensed under the [MIT license](LICENSE.md).
+This package is open-source software licensed under the [MIT license](LICENSE).

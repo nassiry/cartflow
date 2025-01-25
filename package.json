@@ -1,6 +1,6 @@
 {
   "name": "cartflow",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A lightweight JavaScript library for creating smooth 'Add to Cart' animations with customizable options, sound effects, and cart shake effects.",
   "main": "CartFlow.js",
   "scripts": {
