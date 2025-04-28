@@ -1,10 +1,30 @@
 {
   "name": "cartflow",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A lightweight JavaScript library for creating smooth 'Add to Cart' animations with customizable options, sound effects, and cart shake effects.",
-  "main": "CartFlow.js",
+  "main": "dist/CartFlow.js",
+  "module": "dist/CartFlow.mjs",
+  "types": "dist/CartFlow.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/CartFlow.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    "require": "./dist/CartFlow.js",
+    "import": "./dist/CartFlow.mjs"
+  },
   "scripts": {
-    "test": "echo \"No tests yet\""
+    "build": "tsup && cp src/CartFlow.d.ts dist/",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet, run the demo instead\" && exit 0",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "lint:fix": "eslint . --fix",
+    "demo": "serve demo -l 3000",
+    "dev": "npm run build && npm run watch"
   },
   "keywords": [
     "cartflow",
@@ -15,16 +35,31 @@
     "ecommerce",
     "cart-animation",
     "customizable",
-    "frontend"
+    "frontend",
+    "ecommerce"
   ],
   "author": "A.S Nassiry",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/nassiry/cartflow.git"
   },
   "bugs": {
-      "url": "https://github.com/nassiry/cartflow/issues"
-    },
-  "homepage": "https://github.com/nassiry/cartflow#readme"  
+    "url": "https://github.com/nassiry/cartflow/issues"
+  },
+  "homepage": "https://github.com/nassiry/cartflow#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "serve": "^14.2.4",
+    "tsup": "^8.4.0",
+    "typescript-eslint": "^8.31.0"
+  }
 }

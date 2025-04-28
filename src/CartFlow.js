@@ -1,5 +1,5 @@
 /**
- * Copyright (c) A.S Nassiry
+ * Copyright (c) 2025 A.S Nassiry
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -7,15 +7,16 @@
  * @see https://github.com/nassiry/cartflow
  */
 (function (global, factory) {
-  if (typeof module === "object" && typeof module.exports === "object") {
+  if (typeof module === 'object' && typeof module.exports === 'object') {
     module.exports = factory();
-  } else if (typeof define === "function" && define.amd) {
+    /* global define */
+  } else if (typeof define === 'function' && define.amd) {
     define(factory);
   } else {
     global.CartFlow = factory();
   }
-})(typeof window !== "undefined" ? window : this, function () {
-  "use strict";
+})(typeof window !== 'undefined' ? window : this, function () {
+  'use strict';
 
   class CartFlow {
     /**
@@ -24,23 +25,25 @@
      */
     constructor(options = {}) {
       this.DEFAULTS = {
-        cartSelector: ".shopping-cart",
-        buttonSelector: ".add-to-cart",
-        itemSelector: ".item",
-        imageSelector: "img",
+        cartSelector: '.shopping-cart',
+        buttonSelector: '.add-to-cart',
+        itemSelector: '.item',
+        imageSelector: 'img',
         animationDuration: 1000,
-        easing: "ease-in-out",
+        easing: 'ease-in-out',
         shakeEffect: true,
         soundEffect: null,
         onComplete: null,
-        onCartShake: null
+        onCartShake: null,
       };
 
       this.settings = { ...this.DEFAULTS, ...options };
       this.cartElement = document.querySelector(this.settings.cartSelector);
 
       if (!this.cartElement) {
-        throw new Error(`Cart element not found: ${this.settings.cartSelector}`);
+        throw new Error(
+          `Cart element not found: ${this.settings.cartSelector}`,
+        );
       }
 
       this.animationQueue = [];
@@ -53,7 +56,7 @@
      * Set up event listeners for cart button clicks
      */
     initEventListeners() {
-      document.body.addEventListener("click", (event) => {
+      document.body.addEventListener('click', (event) => {
         const button = event.target.closest(this.settings.buttonSelector);
         if (button) {
           this._handleButtonClick(button);
@@ -77,10 +80,15 @@
       }
 
       if (this.settings.soundEffect) {
-        if (typeof this.settings.soundEffect === "string" || this.settings.soundEffect instanceof HTMLAudioElement) {
+        if (
+          typeof this.settings.soundEffect === 'string' ||
+          this.settings.soundEffect instanceof HTMLAudioElement
+        ) {
           this._playSound(this.settings.soundEffect);
         } else {
-          console.warn("Invalid soundEffect type. Must be a string or an HTMLAudioElement.");
+          console.warn(
+            'Invalid soundEffect type. Must be a string or an HTMLAudioElement.',
+          );
         }
       }
 
@@ -95,10 +103,14 @@
     _playSound(soundEffect) {
       try {
         const audio =
-          typeof soundEffect === "string" ? new Audio(soundEffect) : soundEffect;
-        audio?.play().catch((err) => console.error("Failed to play sound:", err));
+          typeof soundEffect === 'string'
+            ? new Audio(soundEffect)
+            : soundEffect;
+        audio
+          ?.play()
+          .catch((err) => console.error('Failed to play sound:', err));
       } catch (error) {
-        console.error("Error playing sound:", error);
+        console.error('Error playing sound:', error);
       }
     }
 
@@ -126,7 +138,7 @@
 
       const computedStyles = window.getComputedStyle(image);
       Object.assign(clone.style, {
-        position: "absolute",
+        position: 'absolute',
         top: `${imageRect.top + window.scrollY}px`,
         left: `${imageRect.left + window.scrollX}px`,
         width: `${imageRect.width}px`,
@@ -136,12 +148,12 @@
         filter: computedStyles.filter,
         opacity: 0.7,
         zIndex: 1000,
-        pointerEvents: "none",
+        pointerEvents: 'none',
       });
 
       document.body.appendChild(clone);
-
-      if (typeof gsap !== "undefined") {
+      /* global gsap */
+      if (typeof gsap !== 'undefined') {
         // Use GSAP for animation if available
         gsap.to(clone, {
           duration: this.settings.animationDuration / 1000,
@@ -166,8 +178,8 @@
           Object.assign(clone.style, {
             top: `${cartRect.top + window.scrollY + 10}px`,
             left: `${cartRect.left + window.scrollX + 10}px`,
-            width: "50px",
-            height: "50px",
+            width: '50px',
+            height: '50px',
             opacity: 0,
           });
         });
@@ -198,7 +210,7 @@
      * Add a shake effect to the cart
      */
     _shakeCart() {
-      if (typeof gsap !== "undefined") {
+      if (typeof gsap !== 'undefined') {
         // Use GSAP for shake animation
         gsap.fromTo(
           this.cartElement,
@@ -209,15 +221,15 @@
             repeat: 3,
             yoyo: true,
             onComplete: () => this.settings.onCartShake?.(this.cartElement),
-          }
+          },
         );
       } else {
         // Fallback CSS animation
         const keyframes = [
-          { transform: "translateX(0)" },
-          { transform: "translateX(-10px)" },
-          { transform: "translateX(10px)" },
-          { transform: "translateX(0)" },
+          { transform: 'translateX(0)' },
+          { transform: 'translateX(-10px)' },
+          { transform: 'translateX(10px)' },
+          { transform: 'translateX(0)' },
         ];
 
         this.cartElement.animate(keyframes, {

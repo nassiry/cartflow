@@ -1,0 +1,10 @@
+node_modules
+*.min.js
+*.mjs
+*.md
+*.json
+*.prettierrc
+*.config.js
+*.config.ts
+/demo
+.github

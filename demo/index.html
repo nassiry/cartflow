@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CartFlow.js Demo</title>
+    <meta name="description" content="CartFlow is a lightweight, modern JavaScript library to animate items moving to a shopping cart. It supports Node.js, browser environments, and UMD/ES module formats.">
+    <meta name="keywords" content="cartflow, add-to-cart, animation, shopping-cart, javascript-library, ecommerce, cart-animation, customizable, frontend, ecommerce">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Only for demo purpose -->
+    <style>
+        .shopping-cart {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+        .item {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .item img {
+            width: 100%;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Product Items -->
+<div class="container">
+    <p class="text-center fs-4 fw-bolder my-4">
+        Click the "Add to Cart" button to see the animation in action.<br>
+        <span class="fs-6 fw-normal">(Don't forget to check your browser console for event logs!)</span>
+    </p>
+    <div class="row">
+        <!-- Product 1 -->
+        <div class="col-md-3">
+            <div class="item item p-3 text-bg-dark rounded" data-item="1">
+                <img src="https://placehold.co/600x400" class="img-thumbnail" alt="Product Image">
+                <h5 class="pt-2">Product 1</h5>
+                <p>$20.00</p>
+                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="col-md-3">
+            <div class="item item p-3 text-bg-dark rounded" data-item="2">
+                <img src="https://placehold.co/600x400" class="img-thumbnail" alt="Product Image">
+                <h5 class="pt-2">Product 2</h5>
+                <p>$35.00</p>
+                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="col-md-3">
+            <div class="item item p-3 text-bg-dark rounded" data-item="3">
+                <img src="https://placehold.co/600x400" class="img-thumbnail" alt="Product Image">
+                <h5 class="pt-2">Product 3</h5>
+                <p>$50.00</p>
+                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="item text-bg-dark rounded p-2">
+                <h5 class="fw-bold">Process Result:</h5>
+                <strong>onComplete</strong>
+                <div id="onComplete" class="mb-3 text-danger"></div>
+                <h5>Fore More Information</h5>
+                For additional details and comprehensive guidance, please visit the package <a href="https://github.com/nassiry/cartflow" target="_blank">repository</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Product 4 -->
+        <div class="col-md-3">
+            <div class="item item p-3 text-bg-dark rounded" data-item="4">
+                <img src="https://placehold.co/600x400" class="img-thumbnail" alt="Product Image">
+                <h5 class="pt-2">Product 4</h5>
+                <p>$20.00</p>
+                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Product 5 -->
+        <div class="col-md-3">
+            <div class="item item p-3 text-bg-dark rounded" data-item="5">
+                <img src="https://placehold.co/600x400" class="img-thumbnail" alt="Product Image">
+                <h5 class="pt-2">Product 5</h5>
+                <p>$35.00</p>
+                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Product 6 -->
+        <div class="col-md-3">
+            <div class="item item p-3 text-bg-dark rounded" data-item="6">
+                <img src="https://placehold.co/600x400" class="img-thumbnail" alt="Product Image">
+                <h5 class="pt-2">Product 6</h5>
+                <p>$50.00</p>
+                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Product 7 -->
+        <div class="col-md-3">
+            <div class="item item p-3 text-bg-dark rounded" data-item="7">
+                <img src="https://placehold.co/600x400" class="img-thumbnail" alt="Product Image">
+                <h5 class="pt-2">Product 7</h5>
+                <p>$50.00</p>
+                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Shopping Cart Icon -->
+<div class="shopping-cart">
+    🛒
+</div>
+
+<!-- Dev/Prod Banner -->
+<div id="modeBanner" class="position-fixed bottom-0 start-0 w-100 text-center p-2 border-top fs-4 fw-bolder" style="z-index: 1050;">
+</div>
+
+<!-- Bootstrap JS, Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<!-- DEMO ONLY: Dynamically load local or CDN library -->
+<script>
+(function() {
+    const isLocal = window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1';
+
+    const script = document.createElement('script');
+    script.src = isLocal
+        ? '../dist/CartFlow.js'
+        : 'https://unpkg.com/cartflow@latest/dist/CartFlow.js';
+
+    script.onload = () => {
+
+        console.log('Library loaded successfully:',window.CartFlow);
+
+        // Initialization and configuration of Cartflow.js
+        const animation = new CartFlow({
+            cartSelector: ".shopping-cart",
+            buttonSelector: ".add-to-cart",
+            onComplete: (item) => {
+                const index = item.dataset.item;
+                const result = document.getElementById('onComplete');
+                result.textContent = "Item NO " + index +" successfully animated to the cart";
+
+                console.log("Item successfully animated to the cart!", item);
+            },
+            onCartShake: (cart) => {
+                console.log("Cart shake effect completed!", cart);
+            },
+            soundEffect: "success.mp3",
+        });
+    };
+
+    script.onerror = () => {
+        console.error('Failed to load the library script.');
+    };
+
+    document.head.appendChild(script);
+
+    // Handle banner text
+    const banner = document.getElementById('modeBanner');
+    if (banner) {
+        banner.textContent = isLocal
+            ? 'Development Mode: Using local /dist/CartFlow.js'
+            : 'Production Mode: Using CDN https://unpkg.com/cartflow@latest/';
+        banner.classList.add(isLocal ? 'bg-warning' : 'bg-success', 'text-dark');
+    }
+})();
+</script>
+<!-- END DEMO ONLY -->
+<!--
+NOTE TO DEVELOPERS:
+
+This demo page dynamically loads the library.
+In your production code, DO NOT use dynamic script loading.
+
+Instead, use static import:
+
+<script src="https://unpkg.com/cartflow@latest/dist/CartFlow.js"></script>
+
+or install via npm and import via ES modules or require().
+-->
+</body>
+</html>
