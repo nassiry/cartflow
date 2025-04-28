@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 ---
 
+## [v3.0.1] - 2025-04-28
+
+### Changed
+- Moved demo files from `demo/` folder to `docs/` folder for GitHub Pages compatibility.
+- Updated README links to point to the new `docs/` path.
+
+---
+
 ## [3.0.0] - 2025-04-26
 
 ### Added

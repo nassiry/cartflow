@@ -51,13 +51,13 @@ npm install
 
 If your contribution includes changes to **public APIs** or **core functionality**, you may need to update the online demo:
 
-- **Demo Location:** The demo lives in `./demo/`.
+- **Demo Location:** The demo lives in `./docs/`.
 - **Testing Locally:** Run the demo locally to verify changes:
     ```bash
-    npm run demo  # Starts demo server at http://localhost:3000  
+    npm run docs  # Starts docs server at http://localhost:3000  
     ```
 - **Update Demo Files:**
-    - Modify `demo/index.html` or relevant demo scripts if APIs change.
+    - Modify `docs/index.html` or relevant demo scripts if APIs change.
     - Add/remove examples to reflect new features or breaking changes.
 
 ## 5. Making Contributions

@@ -4,7 +4,6 @@
 
 [![Project Showcase](https://img.shields.io/badge/See-Showcase-8A2BE2)](SHOWCASE.md)
 [![Live Demo](https://img.shields.io/badge/demo-online-green?logo=github)](https://nassiry.github.io/cartflow/)
-![Build Status](https://img.shields.io/github/actions/workflow/status/nassiry/cartflow/build.yml?branch=main)
 ![Minified Size](https://img.shields.io/bundlephobia/min/cartflow)
 ![TypeScript Supported](https://img.shields.io/badge/TypeScript-Supported-3178C6?logo=typescript&logoColor=white)
 ![Total Downloads](https://img.shields.io/npm/dt/cartflow.svg)
